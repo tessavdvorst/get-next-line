@@ -6,20 +6,11 @@
 /*   By: Tessa <tvan-der@student.codam.nl>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/10 10:36:31 by Tessa         #+#    #+#                 */
-/*   Updated: 2021/06/15 18:20:46 by Tessa         ########   odam.nl         */
+/*   Updated: 2021/09/07 13:19:09 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/* Description:
-** This function takes a string, iterates through it and
-** looks if there's a newline character in it.
-**
-** Return:
-** 1: a newline character is found.
-** 0: there is no newline character.
-*/
 
 int	find_new_line(char *str)
 {
@@ -37,12 +28,6 @@ int	find_new_line(char *str)
 	return (0);
 }
 
-/* Description:
-** This function counts the amount of characters of a given string.
-** When the charachter is equal to c, the amount of characters
-** will be returned up until that character.
-*/
-
 int	ft_strlen(char *str, char c)
 {
 	int	i;
@@ -59,10 +44,6 @@ int	ft_strlen(char *str, char c)
 	return (i);
 }
 
-/* Description:
-** This function copies the content of src to dst if src exists.
-*/
-
 void	ft_strcpy(char *dst, char *src)
 {
 	int	i;
@@ -77,16 +58,6 @@ void	ft_strcpy(char *dst, char *src)
 	}
 	dst[i] = '\0';
 }
-
-/* Description:
-** This function searches for c in str.
-** If c is found, the remaining part after c will be moved
-** to the front in str.
-**
-** Returns:
-** 1: c is found in str.
-** 0: c is not found in str.
-*/
 
 int	ft_strcorrect(char *str, char c)
 {
@@ -107,11 +78,6 @@ int	ft_strcorrect(char *str, char c)
 	return (0);
 }
 
-/* Description:
-** This function copies str1 and str2 together up
-** until c in a newly allocated string.
-*/
-
 char	*ft_strjoin(char *str1, char *str2, char c)
 {
 	int		i;
@@ -123,12 +89,12 @@ char	*ft_strjoin(char *str1, char *str2, char c)
 		return (str1);
 	len_str1 = ft_strlen(str1, c);
 	len_str2 = ft_strlen(str2, c);
-	new = (char *)malloc(sizeof(char) * (len_str1 + len_str2 + 1));
+	new = (char *)malloc(sizeof(char) * (len_str1 + len_str2 + 1 + 1));
 	if (!new)
 		return (NULL);
 	ft_strcpy(new, str1);
 	i = 0;
-	while (str2[i] != '\0' && str2[i] != c)
+	while (str2[i] != '\0' && i < len_str2 + 1)
 	{
 		new[len_str1] = str2[i];
 		len_str1++;

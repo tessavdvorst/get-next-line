@@ -6,7 +6,7 @@
 /*   By: Tessa <tvan-der@student.codam.nl>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/15 15:02:25 by Tessa         #+#    #+#                 */
-/*   Updated: 2021/06/15 18:17:30 by Tessa         ########   odam.nl         */
+/*   Updated: 2021/09/07 15:06:18 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# ifndef BUFFERSIZE
-#  define BUFFERSIZE 4
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10000000
 # endif
 
 # define MAX_FD 1024
@@ -27,6 +27,6 @@ char	*ft_strjoin(char *str1, char *str2, char c);
 int		ft_strcorrect(char *str, char c);
 int		ft_strlen(char *str, char c);
 void	ft_strcpy(char *dst, char *src);
-int		get_next_line(int fd, char **line);
+char	*get_next_line(int fd);
 
 #endif

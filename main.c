@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_next_line.h                                    :+:    :+:            */
+/*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/16 16:21:12 by tvan-der      #+#    #+#                 */
-/*   Updated: 2021/09/07 13:24:47 by tvan-der      ########   odam.nl         */
+/*   Created: 2021/03/16 16:30:16 by tvan-der      #+#    #+#                 */
+/*   Updated: 2021/09/07 15:14:46 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <stdio.h>
+#include <fcntl.h>
+#include "get_next_line.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+int main()
+{
+	int fd;
+	char *line;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
+	fd = open("bible.txt", O_RDONLY);
+	line = get_next_line(fd);
+	printf("%s", line);
 
-# define MAX_FD 1024
-
-int		find_new_line(char *str);
-char	*ft_strjoin(char *str1, char *str2, char c);
-int		ft_strcorrect(char *str, char c);
-int		ft_strlen(char *str, char c);
-void	ft_strcpy(char *dst, char *src);
-char	*get_next_line(int fd);
-
-#endif
+	while (line)
+	{
+		line = get_next_line(fd);
+		printf("%s", line);
+	}
+	return (0);
+}

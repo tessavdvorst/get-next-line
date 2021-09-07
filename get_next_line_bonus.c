@@ -6,47 +6,34 @@
 /*   By: Tessa <tvan-der@student.codam.nl>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/15 15:03:15 by Tessa         #+#    #+#                 */
-/*   Updated: 2021/06/15 18:17:19 by Tessa         ########   odam.nl         */
+/*   Updated: 2021/09/07 15:05:12 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-/* Description:
-** This function returns a line which read from a file descriptor,
-** without the newline. When called in a loop,
-** this functions reads one line at a time from the file descriptor
-** until the End Of File (EOF) has been reached.
-** In addition, this function is able to
-** handle multiple file descriptors.
-**
-** Returns:
-**  1 : A line has been read.
-**  0 : EOF has been reached.
-** -1 : An error happened.
-*/
-
-int	get_next_line(int fd, char **line)
+char	*get_next_line(int fd)
 {
 	int			read_bytes;
-	static char	buffer[MAX_FD][BUFFERSIZE + 1];
+	char		*line;
+	static char	buffer[MAX_FD][BUFFER_SIZE + 1];
 
-	if (fd < 0 || fd >= MAX_FD || BUFFERSIZE <= 0 || !line)
-		return (-1);
-	*line = NULL;
+	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
+		return (NULL);
+	line = NULL;
 	read_bytes = 1;
 	while (read_bytes > 0)
 	{
-		*line = ft_strjoin(*line, buffer[fd], '\n');
+		line = ft_strjoin(line, buffer[fd], '\n');
 		if (find_new_line(buffer[fd]))
 		{
 			ft_strcorrect(buffer[fd], '\n');
-			return (1);
+			return (line);
 		}
-		read_bytes = read(fd, buffer[fd], BUFFERSIZE);
+		read_bytes = read(fd, buffer[fd], BUFFER_SIZE);
 		if (read_bytes == -1)
-			return (-1);
+			return (NULL);
 		buffer[fd][read_bytes] = '\0';
 	}
-	return (0);
+	return (NULL);
 }

@@ -1,0 +1,64 @@
+-------------------------------------------------------------
+int find_new_line(char *str);
+-------------------------------------------------------------
+
+Description:
+This function takes a string, iterates through it and
+looks if there's a newline character in it.
+Return:
+1: a newline character is found.
+0: there is no newline character.
+
+-------------------------------------------------------------
+int	ft_strlen(char *str, char c);
+-------------------------------------------------------------
+
+Description:
+This function counts the amount of characters
+of a given string. When the charachter is
+equal to c, the amount of characters
+will be returned up until that character.
+
+-------------------------------------------------------------
+void	ft_strcpy(char *dst, char *src);
+-------------------------------------------------------------
+
+Description:
+This function copies the content of src to dst if src exists.
+
+-------------------------------------------------------------
+int	ft_strcorrect(char *str, char c);
+-------------------------------------------------------------
+
+Description:
+This function searches for c in str.
+If c is found, the remaining part after c will be moved
+to the front in str.
+
+Returns:
+1: c is found in str.
+0: c is not found in str.
+
+-------------------------------------------------------------
+char	*ft_strjoin(char *str1, char *str2, char c);
+-------------------------------------------------------------
+
+Description:
+This function joins str1 and str2 up until c and
+allocates the right amount of space for it.
+
+-------------------------------------------------------------
+int	get_next_line(int fd, char **line);
+-------------------------------------------------------------
+
+Description:
+This function returns a line which read from a
+file descriptor, without the newline.
+When called in a loop, this functions reads one
+line at a time from the file descriptor
+until the End Of File (EOF) has been reached.
+
+Returns:
+1 : A line has been read.
+0 : EOF has been reached.
+-1 : An error happened.
