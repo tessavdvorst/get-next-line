@@ -6,7 +6,7 @@
 /*   By: Tessa <tvan-der@student.codam.nl>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/15 15:02:25 by Tessa         #+#    #+#                 */
-/*   Updated: 2021/09/07 15:06:18 by tvan-der      ########   odam.nl         */
+/*   Updated: 2021/11/17 12:33:25 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # define MAX_FD 1024
 
 int		find_new_line(char *str);
-char	*ft_strjoin(char *str1, char *str2, char c);
-int		ft_strcorrect(char *str, char c);
-int		ft_strlen(char *str, char c);
+char	*ft_strjoin(char *str1, char *str2);
+int		ft_strcorrect(char *str);
+int		ft_strlen(char *str);
 void	ft_strcpy(char *dst, char *src);
 char	*get_next_line(int fd);
 
