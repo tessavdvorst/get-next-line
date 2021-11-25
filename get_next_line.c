@@ -43,6 +43,8 @@ char	*get_next_line(int fd)
 			line = ft_strjoin(line, buffer);
 		}
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
+        if (read_bytes == -1)
+            return (NULL);
 		buffer[read_bytes] = '\0';
 		if (line && read_bytes == 0)
 			return (line);
